@@ -48,14 +48,20 @@ int main() {
 
 		int money = 0;
 		bool live = true;
+
+		int knight_index = 0;
 		
 		for (int i = 0; i < n; ++i) {
 
-			if (heads[i] <= knights[i]) {
-				money += knights[i];
-			} else {
+			while (heads[i] > knights[knight_index] && knight_index < m) {
+				++knight_index;
+			}
+
+			if (knight_index == m) {
 				live = false;
 				break;
+			} else {
+				money += knights[knight_index++];
 			}
 			
 		}
